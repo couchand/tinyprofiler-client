@@ -1,0 +1,16 @@
+{
+  "name": "tinyprofiler-client",
+  "version": "0.0.1",
+  "description": "shared client for tinyprofiler, a minimal JavaScript profiler",
+  "author": "Andrew Couch <tinyprofiler@andrewcou.ch>",
+  "license": "MIT",
+  "scripts": ["lib/index.js"],
+  "styles": ["lib/index.css"],
+  "repository": "couchand/tinyprofiler-client",
+  "keywords": [
+    "client",
+    "server",
+    "profiling",
+    "ui"
+  ]
+}

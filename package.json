@@ -8,6 +8,7 @@
   "scripts": {
     "test": "mocha"
   },
+  "style": "lib/index.css",
   "repository": {
     "type": "git",
     "url": "https://github.com/couchand/tinyprofiler-client"
