@@ -25,5 +25,8 @@
     "pretty-hrtime": "~0.2.1",
     "superagent": "~0.18.0",
     "xtend": "~3.0.0"
+  },
+  "devDependencies": {
+    "node-sass": "~0.9.3"
   }
 }
