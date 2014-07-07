@@ -27,6 +27,26 @@ package with the manager of your choice: we support **npm** (with
 [npm-css][1] or [rework-npm][2] for stylesheets), **component** and
 **bower**.
 
+If you wish to profile client-side, create an instance of
+*tinyprofiler* and pass it in to the client constructor.
+
+```coffeescript
+tp = require 'tinyprofiler'
+tpClient = require 'tinyprofiler-client'
+
+profiler = tp(options)
+client = tpClient(profiler, options)
+```
+
+If you're only profiling server-side you can just create the client
+passing only the options hash.
+
+```coffeescript
+tpClient = require 'tinyprofiler-client'
+
+client = tpClient(options)
+```
+
 Now go get a UI package for the view engine of your choice!
 
 UI packages
@@ -78,7 +98,44 @@ we welcome pull requests to add additional support.
 
 ### API reference ###
 
-*coming soon*
+#### tinyprofilerClient( [profiler], [options] ) ####
+
+Create a new *tinyprofiler-client*.  `profiler` is an instance of
+*tinyprofiler* for local profiling.  `options` is a hash of options.
+Both are optional.
+
+The options accepted are:
+
+```coffeescript
+headerName: "X-TinyProfiler-Ids"
+monkeyPatch: yes
+path: "tp"
+```
+
+##### headerName #####
+
+the name of the HTTP header to use to receive profile ids
+
+##### monkeyPath #####
+
+do we automatically monkey patch the XHR object?
+
+##### path #####
+
+server path where *tinyprofiler* REST API is mounted
+
+#### fetch( id ) ####
+
+Fetch the profile with the given `id` from the server to make it
+available locally.
+
+#### getById( id ) ####
+
+Get the profile with the given `id` from the local cache.
+
+#### getRequests() ####
+
+Get all profiles held locally.
 
 ##### ╭╮☲☲☲╭╮ #####
 
