@@ -3,13 +3,17 @@ tinyprofiler-client
 
 shared client for tinyprofiler, a minimal JavaScript profiler
 
-  * introduction
-  * getting started
-  * UI packages
-  * documentation
-    * browser bundling
-    * markup specification
-    * API reference
+  * [introduction](#introduction)
+  * [getting started](#getting-started)
+  * [UI packages](#ui-packages)
+  * [documentation](#documentation)
+    * [browser bundling](#browser-bundling)
+    * [markup specification](#markup-specification)
+    * [API reference](#api-reference)
+      * [tinyprofilerClient( [profiler], [options] )](#tinyprofilerclient-profiler-options-)
+      * [fetch( id )](#fetch-id-)
+      * [getById( id )](#getbyid-id-)
+      * [getRequests()](#getrequests)
 
 introduction
 ------------
