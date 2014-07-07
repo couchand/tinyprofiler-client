@@ -23,17 +23,20 @@ class TinyProfilerClient
     return console.error "TinyProfiler patch error: #{err}" if err
     @fetch id for id in ids
 
+  _push: (req) ->
+    @_requests.push new Request req
+
   fetch: (id) ->
     @_fetch id, (err, profile) =>
       return console.error "TinyProfiler fetch error: #{err}" if err
-      @_requests.push profile
+      @_push profile
 
   getById: (id) ->
     for r in @_requests when id is r.id
-      return new Request r
+      return r
     null
 
   getRequests: ->
-    (new Request req for req in @_requests)
+    @_requests.slice()
 
 module.exports = TinyProfilerClient
