@@ -120,7 +120,7 @@ path: "tp"
 
 the name of the HTTP header to use to receive profile ids
 
-##### monkeyPath #####
+##### monkeyPatch #####
 
 do we automatically monkey patch the XHR object?
 
