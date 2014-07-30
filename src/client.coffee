@@ -25,8 +25,10 @@ class TinyProfilerClient
     @_requests = []
 
     @_fetch = fetcher opts
-    unless patcher opts, @_handleRequest
-      console.error "TinyProfiler patching error"
+
+    if options.monkeyPatch
+      unless patcher opts, @_handleRequest
+        console.error "TinyProfiler patching error"
 
     if profiler
       profiler.on 'complete', (req) =>
