@@ -7,6 +7,7 @@ patcher = require './xhr-patch'
 Request = require './request'
 
 defaults =
+  maxProfiles: 20
   monkeyPatch: yes
 
 isTinyProfiler = (profiler) ->
@@ -20,7 +21,7 @@ class TinyProfilerClient
     else
       opts = arguments[0]
 
-    options = xtend {}, defaults, opts
+    @options = options = xtend {}, defaults, opts
 
     @_requests = []
 
@@ -41,7 +42,10 @@ class TinyProfilerClient
     @fetch id for id in ids
 
   _push: (req) ->
-    @_requests.push new Request req
+    count = @_requests.push new Request req
+    max = @options.maxProfiles
+    unless count < max
+      @_requests = @_requests.slice count - max + 1
 
   fetch: (id) ->
     @_fetch id, (err, profile) =>
@@ -49,9 +53,12 @@ class TinyProfilerClient
       @_push profile
 
   getById: (id) ->
-    for r in @_requests when id is r.id
+    for r in @_requests when id is r.getId()
       return r
     null
+
+  remove: (id) ->
+    @_requests = (r for r in @_requests when id isnt r.getId())
 
   getRequests: ->
     @_requests.slice()
