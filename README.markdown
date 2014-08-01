@@ -9,6 +9,7 @@ shared client for tinyprofiler, a minimal JavaScript profiler
   * [documentation](#documentation)
     * [browser bundling](#browser-bundling)
     * [markup specification](#markup-specification)
+    * [events](#events)
     * [API reference](#api-reference)
       * [tinyprofilerClient( [profiler], [options] )](#tinyprofilerclient-profiler-options-)
       * [fetch( id )](#fetch-id-)
@@ -100,6 +101,13 @@ we welcome pull requests to add additional support.
 
 *nothing yet*
 
+### events ###
+
+*tinyprofiler-client* emits an event called `profile` every time it
+gets a new complete request profile, no matter what the source is.  The
+profile is included as the payload of the event.  It is preferred that
+UI packages listen for this event to rerender themselves.
+
 ### API reference ###
 
 #### tinyprofilerClient( [profiler], [options] ) ####
@@ -145,6 +153,10 @@ Get the profile with the given `id` from the local cache.
 #### getRequests() ####
 
 Get all profiles held locally.
+
+#### remove( id ) ####
+
+Remove the given profile from the local store.
 
 ##### ╭╮☲☲☲╭╮ #####
 
