@@ -1,6 +1,7 @@
 # tinyprofiler client
 
 xtend = require 'xtend'
+{EventEmitter2} = require 'eventemitter2'
 
 fetcher = require './fetch'
 patcher = require './xhr-patch'
@@ -13,7 +14,7 @@ defaults =
 isTinyProfiler = (profiler) ->
   profiler?.constructor?.name is 'TinyProfiler'
 
-class TinyProfilerClient
+class TinyProfilerClient extends EventEmitter2
   constructor: ->
     if isTinyProfiler arguments[0]
       profiler = arguments[0]
@@ -46,6 +47,7 @@ class TinyProfilerClient
     max = @options.maxProfiles
     unless count < max
       @_requests = @_requests.slice count - max + 1
+    @emit 'profile', req
 
   fetch: (id) ->
     @_fetch id, (err, profile) =>
