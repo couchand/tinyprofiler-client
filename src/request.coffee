@@ -11,7 +11,7 @@ class Profile
   getDetails: ->
     @profile.details
 
-  # TODO: currently wrong
+  # TODO: currently misleading - is relative
   getStart: ->
     return unless @profile.start
     pretty @profile.start
