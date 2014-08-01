@@ -9,7 +9,7 @@ class Profile
     @profile.name or ''
 
   getDetails: ->
-    @profile.details or ''
+    @profile.details
 
   # TODO: currently wrong
   getStart: ->
@@ -33,6 +33,5 @@ class Request extends Profile
 
   getStart: ->
     new Date @profile.start
-      .toString()
 
 module.exports = Request

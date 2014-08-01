@@ -1,4 +1,136 @@
 /* tinyprofiler - shared client styles */
 
-#tinyprofiler
+$background-color: white
+$border-color: grey
+$subtle-color: grey
+$remove-color: red
+
+$border-radius: 4px
+$table-margin: 3px
+$table-indent: 1em
+$header-space: 0.8em
+
+.tinyprofiler
   position: fixed
+  background-color: $background-color
+  border: thin solid $border-color
+  min-width: 15%
+  max-width: 65%
+  font-family: sans-serif
+
+.tinyprofiler-nw
+  top: 0
+  left: 0
+  border:
+    radius: 0 0 $border-radius
+    top: none
+    left: none
+
+.tinyprofiler-ne
+  top: 0
+  right: 0
+  border:
+    radius: 0 0 0 $border-radius
+    top: none
+    right: none
+
+.tinyprofiler-se
+  bottom: 0
+  right: 0
+  border:
+    radius: $border-radius 0 0
+    bottom: none
+    right: none
+
+.tinyprofiler-sw
+  bottom: 0
+  left: 0
+  border:
+    radius: 0 $border-radius 0 0
+    bottom: none
+    left: none
+
+.tinyprofiler-request
+  border-bottom: thin solid $border-color
+  padding: 2px 0 1px
+
+  &:last-child
+    border-bottom: none
+
+.tinyprofiler-collapsed
+  & > .tinyprofiler-body
+    display: none
+
+  & > .tinyprofiler-header,
+  & > .tinyprofiler-header > .tinyprofiler-target
+    & > .tinyprofiler-collapse
+      display: none
+    & > .tinyprofiler-expand
+      display: block
+
+.tinyprofiler-expanded
+  & > .tinyprofiler-body
+    display: block
+
+  & > .tinyprofiler-header,
+  & > .tinyprofiler-header > .tinyprofiler-target
+    & > .tinyprofiler-collapse
+      display: block
+    & > .tinyprofiler-expand
+      display: none
+
+.tinyprofiler-collapse, .tinyprofiler-expand
+  color: $border-color
+  visibility: hidden
+
+.tinyprofiler-target:hover,
+.tinyprofiler-step .tinyprofiler-header:hover
+  .tinyprofiler-expand, .tinyprofiler-collapse
+    visibility: visible
+
+.tinyprofiler-step.tinyprofiler-leaf
+  .tinyprofiler-header
+    cursor: inherit
+
+  .tinyprofiler-header:hover
+    .tinyprofiler-expand, .tinyprofiler-collapse
+      visibility: hidden
+
+.tinyprofiler-header
+  cursor: pointer
+  display: flex
+  align-items: baseline
+
+.tinyprofiler-target
+  flex: 1
+  display: flex
+  align-items: baseline
+
+.tinyprofiler-name
+  flex: 1
+  margin-left: $table-margin
+  margin-right: $header-space
+
+.tinyprofiler-start, .tinyprofiler-length
+  margin-left: $table-margin
+  font-family: monospace
+
+.tinyprofiler-start, .tinyprofiler-details
+  color: $subtle-color
+  font-size: 0.8em
+  margin-left: $table-margin
+
+.tinyprofiler-request-remove
+  cursor: pointer
+  align-self: center
+  margin: 1px $table-margin
+  color: $subtle-color
+
+  &:hover
+    color: $remove-color
+
+.tinyprofiler-request > .tinyprofiler-body
+  margin-right: $table-indent
+
+.tinyprofiler-body
+  margin-left: $table-indent
