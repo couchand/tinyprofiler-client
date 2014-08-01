@@ -112,6 +112,7 @@ The options accepted are:
 
 ```coffeescript
 headerName: "X-TinyProfiler-Ids"
+maxProfiles: 20
 monkeyPatch: yes
 path: "tp"
 ```
@@ -119,6 +120,10 @@ path: "tp"
 ##### headerName #####
 
 the name of the HTTP header to use to receive profile ids
+
+##### maxProfiles #####
+
+the maximum number of old profiles to hold on to.
 
 ##### monkeyPatch #####
 
