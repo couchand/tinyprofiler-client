@@ -1,6 +1,6 @@
 {
   "name": "tinyprofiler-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "shared client for tinyprofiler, a minimal JavaScript profiler",
   "author": "Andrew Couch <tinyprofiler@andrewcou.ch>",
   "license": "MIT",
