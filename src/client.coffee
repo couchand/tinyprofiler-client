@@ -25,6 +25,7 @@ class TinyProfilerClient extends EventEmitter2
     @options = options = xtend {}, defaults, opts
 
     @_requests = []
+    @_fetches = []
 
     @_fetch = fetcher opts
 
@@ -40,7 +41,9 @@ class TinyProfilerClient extends EventEmitter2
 
   _handleRequest: (err, ids) => # allow handler passing
     return console.error "TinyProfiler patch error: #{err}" if err
-    @fetch id for id in ids
+    toFetch = (id for id in ids when id not in @_fetches)
+    @_fetches = @_fetches.concat toFetch
+    @fetch id for id in toFetch
 
   _push: (req) ->
     count = @_requests.push new Request req
@@ -52,6 +55,7 @@ class TinyProfilerClient extends EventEmitter2
   fetch: (id) ->
     @_fetch id, (err, profile) =>
       return console.error "TinyProfiler fetch error: #{err}" if err
+      @_fetches = (fetch for fetch in @_fetches when fetch isnt id)
       @_push profile
 
   getById: (id) ->
