@@ -29,7 +29,6 @@
   "dependencies": {
     "eventemitter2": "^2",
     "pretty-hrtime": "^1",
-    "superagent": "^2",
     "xtend": "^4"
   },
   "devDependencies": {

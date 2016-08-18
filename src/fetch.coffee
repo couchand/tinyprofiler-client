@@ -1,6 +1,5 @@
 # fetch a profile from the server
 
-request = require 'superagent'
 xtend = require 'xtend'
 
 defaults =
@@ -9,10 +8,14 @@ defaults =
 module.exports = fetcher = (opts) ->
   options = xtend {}, defaults, opts
 
-  fetch = (id, cb) ->
-    request "/#{options.path}/#{id}", (err, res) ->
-      return cb err if err
-      return cb res.text if res.error
-      return cb res.text unless res.body
+  unless window.fetch
+    throw new Error "No fetch global available, too lazy to fallback to XHR."
 
-      cb null, res.body
+  fetch = (id, cb) ->
+    window.fetch "/#{options.path}/#{id}"
+
+      .then (res) ->
+        return cb res.statusText unless res.ok
+        res.json().then (json) -> cb null, json
+
+      .catch (err) -> cb err
