@@ -15,6 +15,7 @@ shared client for tinyprofiler, a minimal JavaScript profiler
       * [fetch( id )](#fetch-id-)
       * [getById( id )](#getbyid-id-)
       * [getRequests()](#getrequests)
+  * [license](#license)
 
 introduction
 ------------
@@ -157,6 +158,11 @@ Get all profiles held locally.
 #### remove( id ) ####
 
 Remove the given profile from the local store.
+
+license
+-------
+
+MIT: [https://couch.mit-license.org/](https://couch.mit-license.org/)
 
 ##### ╭╮☲☲☲╭╮ #####
 
