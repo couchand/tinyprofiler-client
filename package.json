@@ -6,8 +6,11 @@
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha",
-    "build": "coffee -c -o lib src && node-sass src/index.sass lib/index.css"
+    "build": "coffee -c -o lib src && node-sass src/index.sass lib/index.css",
+    "deploy": "npm run clean && npm run build && npm run package",
+    "prepackage": "mkdir dist",
+    "package": "cp -r lib README.markdown LICENSE package.json dist",
+    "clean": "rm -rf lib dist"
   },
   "style": "lib/index.css",
   "repository": {
