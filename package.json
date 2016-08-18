@@ -7,7 +7,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
-    "build": "coffee -c -o lib src && sass src/index.sass lib/index.css"
+    "build": "coffee -c -o lib src && node-sass src/index.sass lib/index.css"
   },
   "style": "lib/index.css",
   "repository": {
@@ -24,12 +24,12 @@
     "ui"
   ],
   "dependencies": {
-    "eventemitter2": "~0.4.14",
-    "pretty-hrtime": "~0.2.1",
-    "superagent": "~0.18.0",
-    "xtend": "~3.0.0"
+    "eventemitter2": "^2.1.0",
+    "pretty-hrtime": "^1.0.2",
+    "superagent": "^2.2.0",
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
-    "node-sass": "~0.9.3"
+    "node-sass": "^3.8.0"
   }
 }
