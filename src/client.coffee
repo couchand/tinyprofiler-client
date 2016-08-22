@@ -47,6 +47,7 @@ class TinyProfilerClient extends EventEmitter2
 
   _push: (req) ->
     count = @_requests.push new Request req
+    @_requests.sort Request.compare
     max = @options.maxProfiles
     unless count < max
       @_requests = @_requests.slice count - max + 1

@@ -34,4 +34,10 @@ class Request extends Profile
   getStart: ->
     new Date @profile.start
 
+  @compare: (a, b) ->
+    switch on
+      when a.profile.start < b.profile.start then -1
+      when b.profile.start < a.profile.start then 1
+      else 0
+
 module.exports = Request
